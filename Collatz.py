@@ -40,7 +40,16 @@ def collatz_eval (i, j) :
     assert i > 0
     assert j > 0
     # <your code>
-    v = 1
+
+    array1 = []
+    while i < j:
+        array1.append(cycle_length(i))
+        i +=1
+    array1.sort()
+    v = array1[-1]
+
+
+
     assert v > 0
     return v
 
@@ -72,3 +81,19 @@ def collatz_solve (r, w) :
     while collatz_read(r, a) :
         v = collatz_eval(a[0], a[1])
         collatz_print(w, a[0], a[1], v)
+
+# -------------
+# cycle_length
+# -------------
+
+def cycle_length (n) :
+    assert n > 0
+    c = 1
+    while n > 1 :
+        if (n % 2) == 0 :
+            n = (n / 2)
+        else :
+            n = (3 * n) + 1
+        c += 1
+    assert c > 0
+    return c
