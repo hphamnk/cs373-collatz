@@ -9,7 +9,9 @@
 # ------------
 # Global
 # ------------
-
+"""
+used lazy cache instead of list to eleminate the problem out of bounds
+"""
 cycle_cache = {1:1}
 
 # ------------
@@ -42,6 +44,10 @@ def collatz_eval (i, j) :
     i is the beginning of the range, inclusive
     j is the end       of the range, inclusive
     return the max cycle length in the range [i, j]
+    check if i is greater than j, if yes, swap them
+    use for loop to go through i to j
+        check if value is in cache, use cache to find cycle length
+        if value is not in cache, find cycle length function and add it to cache
     """
     assert i > 0
     assert j > 0
@@ -80,6 +86,12 @@ def collatz_eval (i, j) :
 # -------------
 
 def cycle_length (n) :
+    """
+    find cycle_length(n) recursively
+    base case: n = 1
+    even: check if value is in cache, if not in cache, call cycle_length(n/2) + 1
+    odd: check if value is in cache, if not in cache, call cycle_length((3n + 1)/2) + 2
+    """
 
     assert n > 0
 
