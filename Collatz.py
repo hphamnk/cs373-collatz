@@ -10,7 +10,9 @@
 # Global
 # ------------
 
-cycle_cache = [0] * 1000001
+#cycle_cache = [0] * 1000001
+
+cycle_cache = {1:1}
 
 # ------------
 # collatz_read
@@ -59,11 +61,10 @@ def collatz_eval (i, j) :
     for x in range (i, j+1):
 
         # value is in cache, use cache to find cycle length
-        if cycle_cache[x] != 0:
-            current_cycle_num = cycle_cache[x]
+        current_cycle_num = cycle_cache.get(x,-1)
 
         # value is not in cache, find cycle length and add it to cache
-        else:
+        if current_cycle_num == -1:
             cycle_cache[x] = cycle_length(x)
             current_cycle_num = cycle_cache[x]
 
@@ -114,18 +115,20 @@ def cycle_length (n) :
     if n == 1:
         return 1
 
-    # even: n / 2, check if value is in bound and in cache, else call recursively, 
+    # even: n / 2, check if value is in cache, else call recursively,
     if ( n % 2 ) == 0:
         x = n / 2
-        if (x < 1000000) and (cycle_cache[x] != 0):
-            return cycle_cache[x] + 1
-        else:
-            return cycle_length(x)  + 1
-
-    # odd: n * 3 + 1 , then same as above
-    if ( n % 2 ) != 0:
-        x = (3 * n + 1) 
-        if (x < 1000000) and (cycle_cache[x] != 0):
-            return cycle_cache[x] + 1
-        else:
+        previous_cycle = cycle_cache.get(x,-1)
+        if previous_cycle == -1:
             return cycle_length(x) + 1
+        else:
+            return previous_cycle + 1
+
+    # odd: n * 3 + 1 , check if value is in cache, else call recursively
+    if ( n % 2 ) != 0:
+        x = (3 * n + 1) / 2
+        previous_cycle = cycle_cache.get(x,-1)
+        if previous_cycle == -1:
+            return cycle_length(x) + 2
+        else:
+            return previous_cycle + 2
