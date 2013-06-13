@@ -1,0 +1,61 @@
+commit d7b204fc6569fcb2a1920fb0d6df85edc2aacdc7
+Author: Hoang Pham <hphamnk@yahoo.com>
+Date:   Thu Jun 13 11:46:23 2013 -0500
+
+    Final Commit
+
+commit 8cf2227d34465db95012ca3df9a1bddb63bf6978
+Author: Hoang Pham <hphamnk@yahoo.com>
+Date:   Thu Jun 13 10:45:34 2013 -0500
+
+    Updated TestCollatz
+
+commit b3d99910daddba982fc13b811d8176f4163a5b71
+Author: Hoang Pham <hphamnk@yahoo.com>
+Date:   Thu Jun 13 10:21:43 2013 -0500
+
+    Added Comments, assert
+
+commit d346c78c6e40b8fcc57cd950c3750d1095c4881a
+Author: Hoang Pham <hphamnk@yahoo.com>
+Date:   Thu Jun 13 10:20:45 2013 -0500
+
+    Updated RunCollatz tests
+
+commit df5dcf3d28620504b0fa1f4be4bf088b3db2f45f
+Author: Hoang Pham <hphamnk@yahoo.com>
+Date:   Thu Jun 13 05:08:01 2013 -0500
+
+    Implemented Dict instead of using List for cache
+
+commit 34695081235f07feb24496a4b17416805750e85a
+Author: Hoang Pham <hphamnk@yahoo.com>
+Date:   Tue Jun 11 13:41:51 2013 -0500
+
+    Fixed Collatz based on SphereCollartz
+
+commit f85d2a10255879b9b5332fe7a30020cd03929f6c
+Author: Hoang Pham <hphamnk@yahoo.com>
+Date:   Tue Jun 11 13:23:32 2013 -0500
+
+    Passed Sphere with SphereCollatz.py
+
+commit a7777bd96f96ec26e072774d1a08c2a3db8c7f28
+Author: Hoang Pham <hphamnk@yahoo.com>
+Date:   Tue Jun 11 02:04:38 2013 -0500
+
+    Created SphereCollatz.py with 1st solution
+
+commit d68bc21e17148d2f837da4cd232a73ba4a818922
+Author: Hoang Pham <hphamnk@yahoo.com>
+Date:   Tue Jun 11 01:50:54 2013 -0500
+
+    1st Solution using array and sort
+
+commit 9044813bdbb6d0096e5fbf7ff66bfaf0fd0cb81b
+Author: Hoang Pham <hphamnk@yahoo.com>
+Date:   Tue Jun 11 00:16:00 2013 -0500
+
+    Initial Commit
+    
+    Added original files
