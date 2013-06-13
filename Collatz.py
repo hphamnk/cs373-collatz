@@ -65,7 +65,7 @@ def collatz_eval (i, j) :
         if current_cycle_num == -1:
             cycle_cache[x] = cycle_length(x)
             current_cycle_num = cycle_cache[x]
-        assert current_cycle_num != -1
+        assert current_cycle_num > 0
 
         # check if current_cycle_num > max_cycle_num
         if current_cycle_num > max_cycle_num:
@@ -93,7 +93,7 @@ def cycle_length (n) :
         if previous_cycle == -1:
             return cycle_length(x) + 1
         else:
-            assert previous_cycle != -1
+            assert previous_cycle > 0
             return previous_cycle + 1
 
     # odd: n * 3 + 1, since this will be even, skip another step by / 2
@@ -104,7 +104,7 @@ def cycle_length (n) :
         if previous_cycle == -1:
             return cycle_length(x) + 2
         else:
-            assert previous_cycle != -1
+            assert previous_cycle > 0
             return previous_cycle + 2
 
 # -------------

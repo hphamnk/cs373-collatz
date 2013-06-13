@@ -87,6 +87,11 @@ class TestCollatz (unittest.TestCase) :
         v = collatz_eval(1, 5)
         self.assert_(v == 8)
 
+    def test_eval_1 (self) :
+        v = collatz_eval(1, 1)
+        self.assert_(v == 1)
+
+
     # -----
     # print
     # -----
@@ -132,6 +137,10 @@ class TestCollatz (unittest.TestCase) :
     # -----
     # cycle_length
     # -----
+
+    def test_cycle_length_1(self) :
+        v = cycle_length(1)
+        self.assert_(v == 1)   
 
     def test_cycle_length_10(self) :
         v = cycle_length(10)
