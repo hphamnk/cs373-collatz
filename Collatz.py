@@ -10,8 +10,6 @@
 # Global
 # ------------
 
-#cycle_cache = [0] * 1000001
-
 cycle_cache = {1:1}
 
 # ------------
@@ -53,13 +51,13 @@ def collatz_eval (i, j) :
         temp = i
         i = j
         j = temp
+
+    assert i <= j    
     
     max_cycle_num = 0
     global cycle_cache 
 
-
     for x in range (i, j+1):
-
         # value is in cache, use cache to find cycle length
         current_cycle_num = cycle_cache.get(x,-1)
 
@@ -67,13 +65,47 @@ def collatz_eval (i, j) :
         if current_cycle_num == -1:
             cycle_cache[x] = cycle_length(x)
             current_cycle_num = cycle_cache[x]
+        assert current_cycle_num != -1
 
         # check if current_cycle_num > max_cycle_num
         if current_cycle_num > max_cycle_num:
             max_cycle_num = current_cycle_num
+        assert max_cycle_num >= current_cycle_num
 
     assert max_cycle_num > 0
     return max_cycle_num
+
+# -------------
+# cycle_length
+# -------------
+
+def cycle_length (n) :
+
+    assert n > 0
+
+    if n == 1:
+        return 1
+
+    # even: n / 2, check if value is in cache, else call recursively,
+    if ( n % 2 ) == 0:
+        x = n / 2
+        previous_cycle = cycle_cache.get(x,-1)
+        if previous_cycle == -1:
+            return cycle_length(x) + 1
+        else:
+            assert previous_cycle != -1
+            return previous_cycle + 1
+
+    # odd: n * 3 + 1, since this will be even, skip another step by / 2
+    # check if value is in cache, else call recursively
+    if ( n % 2 ) != 0:
+        x = (3 * n + 1) / 2
+        previous_cycle = cycle_cache.get(x,-1)
+        if previous_cycle == -1:
+            return cycle_length(x) + 2
+        else:
+            assert previous_cycle != -1
+            return previous_cycle + 2
 
 # -------------
 # collatz_print
@@ -103,32 +135,3 @@ def collatz_solve (r, w) :
     while collatz_read(r, a) :
         v = collatz_eval(a[0], a[1])
         collatz_print(w, a[0], a[1], v)
-
-# -------------
-# cycle_length
-# -------------
-
-def cycle_length (n) :
-
-    assert n > 0
-
-    if n == 1:
-        return 1
-
-    # even: n / 2, check if value is in cache, else call recursively,
-    if ( n % 2 ) == 0:
-        x = n / 2
-        previous_cycle = cycle_cache.get(x,-1)
-        if previous_cycle == -1:
-            return cycle_length(x) + 1
-        else:
-            return previous_cycle + 1
-
-    # odd: n * 3 + 1 , check if value is in cache, else call recursively
-    if ( n % 2 ) != 0:
-        x = (3 * n + 1) / 2
-        previous_cycle = cycle_cache.get(x,-1)
-        if previous_cycle == -1:
-            return cycle_length(x) + 2
-        else:
-            return previous_cycle + 2
